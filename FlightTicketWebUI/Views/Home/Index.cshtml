@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles{
+}
+
+<div class="container-fluid main-section" style="background-image:url('img/mainpage-bg.jpg'); background-size: cover; height:20vh; width:100%; background-position: center;">
+    <div class="shadow"></div>
+    <section class="booking-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-2 col-6 mb-2 mb-md-0 offset-md-1">
+                                <select id="slctPlaceOfDeparture" placeholder="Kalkış Yeri">
+                                    <option value=""></option>
+                                    <option value="1">İstanbul Havalimanı</option>
+                                    <option value="2">Atatürk Havalimanı</option>
+                                    <option value="3">Sabiha Gökçen Havalimanı</option>
+                                    <option value="4">Antalya Havalimanı</option>
+                                    <option value="5">Ankara Esenboğa Havalimanı</option>
+                                    <option value="6">İzmir Adnan Menderes Havalimanı</option>
+                                    <option value="7">Dalaman Havalimanı</option>
+                                    <option value="8">Bodrum Milas Havalimanı</option>
+                                    <option value="9">Trabzon Havalimanı</option>
+                                    <option value="10">Gazipaşa-Alanya Havalimanı</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-6 mb-2 mb-md-0">
+                                <select id="slctPlaceOfDestionation" placeholder="Varış Yeri">
+                                    <option value=""></option>
+                                    <option value="1">İstanbul Havalimanı</option>
+                                    <option value="2">Atatürk Havalimanı</option>
+                                    <option value="3">Sabiha Gökçen Havalimanı</option>
+                                    <option value="4">Antalya Havalimanı</option>
+                                    <option value="5">Ankara Esenboğa Havalimanı</option>
+                                    <option value="6">İzmir Adnan Menderes Havalimanı</option>
+                                    <option value="7">Dalaman Havalimanı</option>
+                                    <option value="8">Bodrum Milas Havalimanı</option>
+                                    <option value="9">Trabzon Havalimanı</option>
+                                    <option value="10">Gazipaşa-Alanya Havalimanı</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-6 mb-2 mb-md-0">
+                                <input type="text" class="form-control" id="departureDate" placeholder="Gidiş Tarihi">
+                            </div>
+                            <div class="col-md-2 col-6 mb-2 mb-md-0">
+                                <input type="text" class="form-control" id="returnDate" placeholder="Dönüş Tarihi">
+                            </div>
+                            <div class="col-md-2 col-12 mb-2 mb-md-0">
+                                <a href="javascript:void(0)" class="btn btn-outline-light btn-block w-100" id="btnSearchRequest"><i class="fa fa-plane text-warning"></i> ARA</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div id="viewComponentContainer"></div>
+
+@section Scripts{
+}

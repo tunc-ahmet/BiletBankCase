@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dXDQlafSE2KzwWnV3k9Gm1Ay/neSVyryjUz+8ZXwVFI=",
+  "Source": "FlightTicketWebApi",
+  "BasePath": "_content/FlightTicketWebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

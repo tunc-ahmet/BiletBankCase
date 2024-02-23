@@ -1,0 +1,352 @@
+﻿@using FlightTicketWebUI.Utilities.Abstract;
+@model IDataResult<RoundTripFlightSearchModel>
+
+    <!-- BU SAYFADA HERHANGİ BİR İŞLEM OLMAYACAĞI İÇİN, SADECE GÖRÜNTÜYE YÖNELİK İŞLEM YAPTIM, BAŞKA HERHANGİ BİR PARÇALAMA İŞLEMİ YA DA REVİZE İŞLEMİ YAPMADIM.-->
+
+<div class="container justify-content-center py-5">
+    <div class="row">
+        <div class="col-xs-12 ">
+            <div class="wizard card-like">
+                <form action="#">
+                    <div class="wizard-header">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="steps text-center">
+                                    <div class="wizard-step active"></div>
+                                    <div class="wizard-step"></div>
+                                    <div class="wizard-step"></div>
+                                </div>
+                                <hr />
+                                <p class="text-center step-header-text">
+                                    Lütfen Gidiş Bileti Seçiniz
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wizard-body">
+                        <div class="step initial active">
+                            <div class="row">
+                                @if (Model != null)
+                                {
+                                    if (Model.Success && Model.Data != null && Model.Data.DepartureFlights != null)
+                                    {
+                                        foreach (var flightOption in Model.Data.DepartureFlights)
+                                        {
+                                            <div class="container my-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-2 d-sm-block d-none">
+                                                                <img src="~/img/plane.png" alt="Pegasus Airlines" class="img-fluid" />
+                                                            </div>
+                                                            <div class="col-3 text-center">
+                                                                <div class="fw-bold">@(flightOption.DepartureDateTime.ToString("dd-MM-yyyy hh:MM:ss"))</div>
+                                                            </div>
+                                                            <div class="col-3 text-center">
+                                                                <span class="fw-bold">@(flightOption.FlightDuration)</span><br>
+                                                                <img src="~/img/right-arrow.png" class="img-fluid" />
+                                                                @(flightOption.FlightNumber)
+                                                            </div>
+                                                            <div class="col-2 text-center">
+                                                                <div class="fw-bold">@(flightOption.DepartureDateTime.ToString("dd-MM-yyyy hh:MM:ss"))</div>
+                                                            </div>
+                                                            <div class="col-3 col-sm-2">
+                                                                <div class="text-center text-danger">
+                                                                    @(flightOption.Price) TL
+                                                                </div>
+                                                                <div class="text-center mt-2">
+                                                                    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#flightDetails">
+                                                                        Detaylı Bilgi
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flightDetails" class="collapse">
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <p class="alert alert-info">Kişi sayı seçimi eklemem istenilmediği için, koltuk seçiminde bir sınır koymadım. Ayrıca, dönen verilerde detay olmadığı için; koltuk seçimi, gidiş-varış arasındaki fark gibi kısımları ekledim.</p>
+                                                                <p><i class="fa fa-cube text-primary"></i> Boş Koltuk Sayısı: <span id="availableSeats">0</span></p>
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <div class="seat front-rounded"></div>
+                                                                        <div class="seat-row">
+                                                                            <!--KOLTUKLARI DİREKT BURADAN EKLEDİM, DAHA GELİŞMİŞ BİR UYGULAMADA UÇAK KOLTUK SAYISI ÇEKİLEREK DÜZENLENEBİLİR-->
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                        </div>
+                                                                        <div class="seat-row">
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                        </div>
+                                                                        <div class="seat back-rounded"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="container my-4">
+                                            <p class="alert alert-danger">
+                                                Gidiş için uygun uçuş bulunamadı!
+                                            </p>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="row">
+                                @if (Model != null)
+                                {
+                                    if (Model.Success && Model.Data != null && Model.Data.ReturnFlights != null)
+                                    {
+                                        foreach (var flightOption in Model.Data.ReturnFlights)
+                                        {
+                                            <div class="container my-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-2 d-sm-block d-none">
+                                                                <img src="~/img/plane.png" alt="Pegasus Airlines" class="img-fluid" />
+                                                            </div>
+                                                            <div class="col-3 text-center">
+                                                                <div class="fw-bold">@(flightOption.DepartureDateTime.ToString("dd-MM-yyyy hh:MM:ss"))</div>
+                                                            </div>
+                                                            <div class="col-3 text-center">
+                                                                <span class="fw-bold">@(flightOption.FlightDuration)</span><br>
+                                                                <img src="~/img/right-arrow.png" class="img-fluid" />
+                                                                @(flightOption.FlightNumber)
+                                                            </div>
+                                                            <div class="col-2 text-center">
+                                                                <div class="fw-bold">@(flightOption.DepartureDateTime.ToString("dd-MM-yyyy hh:MM:ss"))</div>
+                                                            </div>
+                                                            <div class="col-3 col-sm-2">
+                                                                <div class="text-center text-danger">
+                                                                    @(flightOption.Price) TL
+                                                                </div>
+                                                                <div class="text-center mt-2">
+                                                                    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#flightDetails">
+                                                                        Detaylı Bilgi
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="flightDetails" class="collapse">
+                                                        <div class="card-body">
+                                                            <div class="container">
+                                                                <p class="alert alert-info">Kişi sayı seçimi eklemem istenilmediği için, koltuk seçiminde bir sınır koymadım. Ayrıca, dönen verilerde detay olmadığı için; koltuk seçimi, gidiş-varış arasındaki fark gibi kısımları ekledim.</p>
+                                                                <p><i class="fa fa-cube text-primary"></i> Boş Koltuk Sayısı: <span id="availableSeats">0</span></p>
+                                                                <div class="row">
+                                                                    <div class="col text-center">
+                                                                        <div class="seat front-rounded"></div>
+                                                                        <div class="seat-row">
+                                                                            <!--KOLTUKLARI DİREKT BURADAN EKLEDİM, DAHA GELİŞMİŞ BİR UYGULAMADA UÇAK KOLTUK SAYISI ÇEKİLEREK DÜZENLENEBİLİR-->
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                        </div>
+                                                                        <div class="seat-row">
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="aisle"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                            <div class="seat"></div>
+                                                                        </div>
+                                                                        <div class="seat back-rounded"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="container my-4">
+                                            <p class="alert alert-danger">
+                                                Gidiş için uygun uçuş bulunamadı!
+                                            </p>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="row">
+                                <p class="alert alert-info">
+                                    Kişisel bilgiler ve ödeme işlemlerine yönelik adımlar yer alabilir.
+                                </p>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wizard-footer">
+                        <div class="row">
+
+                            <div class="col-xs-6 pull-right text-center">
+                                <button id="wizard-next" type="button" class="btn btn-irv">
+                                    Devam Et
+                                </button>
+                            </div>
+                            <div class="col-xs-6 pull-right block-center">
+                                <button id="wizard-subm" style="display:none" type="button" class="btn btn-irv">
+                                    Onayla
+                                </button>
+                            </div>
+                            <div class="col-xs-6 pull-left block-center">
+                                <button id="wizard-prev" style="display:none" type="button" class="btn btn-irv btn-irv-default">
+                                    Geri
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function updateAvailableSeats(delta) {
+        var availableSeatsElement = document.getElementById('availableSeats');
+        var availableSeats = parseInt(availableSeatsElement.textContent, 10);
+        availableSeatsElement.textContent = availableSeats + delta;
+    }
+
+    updateAvailableSeats(document.querySelectorAll('.seat:not(.occupied)').length);
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
+            e.target.classList.toggle('selected');
+            var isSelected = e.target.classList.contains('selected');
+            updateAvailableSeats(isSelected ? -1 : 1);
+        }
+    });
+
+    var checkButtons = (activeStep, stepsCount) => {
+        var prevBtn = $("#wizard-prev");
+        var nextBtn = $("#wizard-next");
+        var submBtn = $("#wizard-subm");
+
+        switch (activeStep / stepsCount) {
+            case 0: 
+                $(".step-header-text").text("Lütfen gidiş bileti seçimi yapınız")
+                prevBtn.hide();
+                submBtn.hide();
+                nextBtn.show();
+                break;
+            case 1: 
+                $(".step-header-text").text("Lütfen ödeme işlemi yapınız")
+                nextBtn.hide();
+                prevBtn.show();
+                submBtn.show();
+                break;
+            default:
+                $(".step-header-text").text("Lütfen dönüş bileti seçimi yapınız")
+                submBtn.hide();
+                prevBtn.show();
+                nextBtn.show();
+        }
+    };
+
+    const scrollWindow = (activeStepHeight, viewHeight) => {
+        if (viewHeight < activeStepHeight) {
+            $(window).scrollTop($(steps[activeStep]).offset().top - viewHeight / 2);
+        }
+    };
+
+    const setWizardHeight = activeStepHeight => {
+        $(".wizard-body").height(activeStepHeight);
+    };
+
+    $(function () {
+        const wizardSteps = $(".wizard-header .wizard-step");
+        const steps = $(".wizard-body .step");
+        const stepsCount = steps.length - 1;
+        const viewHeight = $(window).height();
+        let activeStep = 0;
+        let activeStepHeight = $(steps[activeStep]).height();
+
+        checkButtons(activeStep, stepsCount);
+        setWizardHeight(activeStepHeight);
+
+        $(window).resize(function () {
+            setWizardHeight($(steps[activeStep]).height());
+        });
+
+        $("#wizard-prev").click(() => {
+            $(steps[activeStep]).removeClass("active");
+            $(wizardSteps[activeStep]).removeClass("active");
+
+            activeStep--;
+
+            $(steps[activeStep]).removeClass("off").addClass("active");
+            $(wizardSteps[activeStep]).addClass("active");
+
+            activeStepHeight = $(steps[activeStep]).height();
+            setWizardHeight(activeStepHeight);
+            checkButtons(activeStep, stepsCount);
+        });
+
+        $("#wizard-next").click(() => {
+            $(steps[activeStep]).removeClass("inital").addClass("off").removeClass("active");
+            $(wizardSteps[activeStep]).removeClass("active");
+
+            activeStep++;
+
+            $(steps[activeStep]).addClass("active");
+            $(wizardSteps[activeStep]).addClass("active");
+
+            activeStepHeight = $(steps[activeStep]).height();
+            setWizardHeight(activeStepHeight);
+            checkButtons(activeStep, stepsCount);
+        });
+    });
+</script>

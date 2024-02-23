@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlightTicketWebApi", "FlightTicketWebApi.csproj", "{0CBDD708-BE9B-4AC0-AB30-C92E841FC0D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightTicketWebApi.Tests", "..\FlightTicketWebApi.Tests\FlightTicketWebApi.Tests.csproj", "{7156FE07-C407-456C-B5F0-1DF37647E510}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CBDD708-BE9B-4AC0-AB30-C92E841FC0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CBDD708-BE9B-4AC0-AB30-C92E841FC0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CBDD708-BE9B-4AC0-AB30-C92E841FC0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CBDD708-BE9B-4AC0-AB30-C92E841FC0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7156FE07-C407-456C-B5F0-1DF37647E510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7156FE07-C407-456C-B5F0-1DF37647E510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7156FE07-C407-456C-B5F0-1DF37647E510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7156FE07-C407-456C-B5F0-1DF37647E510}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BE72141-57FD-464C-A8CF-CC70BD893E18}
+	EndGlobalSection
+EndGlobal
